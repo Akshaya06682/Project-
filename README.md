@@ -21,3 +21,16 @@ Python, scikit-learn, pandas, seaborn, matplotlib, XGBoost, imbalanced-learn, Go
 git clone https://github.com/your-username/AI-Credit-Card-Fraud-Detection.git
 cd AI-Credit-Card-Fraud-Detection
 pip install -r requirements.txt
+
+#Coding
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
+
+def load_data(file_path):
+    return pd.read_csv(file_path)
+
+def scale_features(df):
+    scaler = StandardScaler()
+    df['scaled_amount'] = scaler.fit_transform(df[['Amount']])
+    df['scaled_time'] = scaler.fit_transform(df[['Time']])
+    return df.drop(['Amount', 'Time'], axis=1)
